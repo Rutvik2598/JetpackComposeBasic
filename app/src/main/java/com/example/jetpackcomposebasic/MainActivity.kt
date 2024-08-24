@@ -10,7 +10,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -33,7 +36,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackComposeBasicTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
+                    ListView(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -80,10 +83,29 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
+//@Preview(showBackground = true)
+//@Composable
+//fun GreetingPreview() {
+//    JetpackComposeBasicTheme {
+//        Greeting("Android")
+//    }
+//}
+
+@Composable
+fun ListView(name: String, modifier: Modifier = Modifier) {
+    LazyColumn (
+        modifier = Modifier.fillMaxSize()
+    ) {
+        items(10) { i ->
+            Icon(imageVector = Icons.Default.Add, contentDescription = "List view", modifier = Modifier.size(100.dp))
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun ListPreview() {
     JetpackComposeBasicTheme {
-        Greeting("Android")
+        ListView("Android")
     }
 }
